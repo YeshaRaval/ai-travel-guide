@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Plane, Compass, Sparkles, User, LogOut, BookOpen } from 'lucide-react';
+import { Plane, Compass, Sparkles, User, LogOut, BookOpen, Menu, X } from 'lucide-react';
 import { useSession, signOut } from 'next-auth/react';
 import ThemeToggle from './ThemeToggle';
 
@@ -10,6 +10,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const { data: session, status } = useSession();
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,22 +124,97 @@ export default function Navigation() {
           )}
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 hover:bg-surface-elevated rounded-lg transition-colors">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 glass rounded-lg transition-colors"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-4 glass rounded-2xl overflow-hidden animate-slide-in-up">
+            <div className="px-4 py-2 space-y-1">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center space-x-2 px-4 py-3 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors"
+              >
+                <Compass className="w-4 h-4" />
+                <span>Home</span>
+              </Link>
+              <Link
+                href="/itinerary"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center space-x-2 px-4 py-3 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Plan Trip</span>
+              </Link>
+              <Link
+                href="/suggestions"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center space-x-2 px-4 py-3 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors"
+              >
+                <Plane className="w-4 h-4" />
+                <span>Discover</span>
+              </Link>
+
+              {status === 'authenticated' && session ? (
+                <>
+                  <Link
+                    href="/my-itineraries"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center space-x-2 px-4 py-3 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-colors"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    <span>My Trips</span>
+                  </Link>
+                  <div className="px-4 py-2 border-t border-border/50">
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      Signed in as {session.user?.name}
+                    </p>
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        handleSignOut();
+                      }}
+                      className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Sign Out</span>
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="px-4 py-3 border-t border-border/50 space-y-2">
+                  <Link
+                    href="/login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block w-full text-center px-6 py-2.5 glass rounded-full hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    href="/signup"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block w-full text-center px-6 py-2.5 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-semibold transition-all duration-300"
+                  >
+                    Get Started
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
