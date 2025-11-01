@@ -364,6 +364,9 @@ export default function ItineraryPage() {
                 setItinerary('');
                 setChainOfThought([]);
               }}
+              onItineraryUpdate={(newItinerary) => {
+                setItinerary(newItinerary);
+              }}
             />
           </div>
         )}

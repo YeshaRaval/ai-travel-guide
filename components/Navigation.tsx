@@ -2,10 +2,13 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Plane, Compass, Sparkles } from 'lucide-react';
+import { Plane, Compass, Sparkles, User, LogOut, BookOpen } from 'lucide-react';
+import { useSession, signOut } from 'next-auth/react';
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const { data: session, status } = useSession();
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +17,10 @@ export default function Navigation() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: '/' });
+  };
 
   return (
     <nav
@@ -59,13 +66,55 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* CTA Button */}
-          <Link
-            href="/itinerary"
-            className="hidden md:block px-6 py-2.5 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-semibold hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
-          >
-            Start Planning
-          </Link>
+          {/* Auth Buttons */}
+          {status === 'loading' ? (
+            <div className="hidden md:block w-24 h-10 glass rounded-full animate-pulse"></div>
+          ) : session ? (
+            <div className="hidden md:flex items-center space-x-4">
+              <Link
+                href="/my-itineraries"
+                className="flex items-center space-x-2 px-4 py-2 glass rounded-full hover:bg-white/10 transition-all duration-300"
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>My Trips</span>
+              </Link>
+              <div className="relative">
+                <button
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full hover:from-primary hover:to-secondary transition-all duration-300"
+                >
+                  <User className="w-4 h-4" />
+                  <span>{session.user?.name}</span>
+                </button>
+                {showUserMenu && (
+                  <div className="absolute right-0 mt-2 w-48 glass rounded-xl overflow-hidden shadow-lg shadow-primary/20">
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full flex items-center space-x-2 px-4 py-3 hover:bg-white/10 transition-colors"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Sign Out</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="hidden md:flex items-center space-x-4">
+              <Link
+                href="/login"
+                className="px-6 py-2.5 glass rounded-full hover:bg-white/10 transition-all duration-300"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/signup"
+                className="px-6 py-2.5 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-semibold hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
+              >
+                Get Started
+              </Link>
+            </div>
+          )}
 
           {/* Mobile Menu Button */}
           <button className="md:hidden p-2 hover:bg-surface-elevated rounded-lg transition-colors">
