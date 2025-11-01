@@ -209,15 +209,15 @@ export default function ItineraryResult({ itinerary, isGenerating, formData, onN
           <div>
             <h2 className="text-3xl font-bold mb-2">Your Personalized Itinerary</h2>
             <div className="flex flex-wrap gap-4 mt-4">
-              <div className="flex items-center space-x-2 text-sm text-gray-400">
+              <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                 <MapPin className="w-4 h-4" />
                 <span>{formData.destination}</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-400">
+              <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                 <Calendar className="w-4 h-4" />
                 <span>{formData.startDate} to {formData.endDate}</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-400">
+              <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                 <DollarSign className="w-4 h-4" />
                 <span className="capitalize">{formData.budget}</span>
               </div>
@@ -293,7 +293,7 @@ export default function ItineraryResult({ itinerary, isGenerating, formData, onN
       </div>
 
       {/* Itinerary Content */}
-      <div className="prose prose-invert prose-lg max-w-none">
+      <div className="prose dark:prose-invert prose-lg max-w-none">
         {isGenerating && !itinerary ? (
           <div className="space-y-4">
             {[...Array(5)].map((_, i) => (
@@ -302,7 +302,7 @@ export default function ItineraryResult({ itinerary, isGenerating, formData, onN
           </div>
         ) : isEditing ? (
           <div>
-            <label className="block text-sm font-medium mb-2 text-gray-300">
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
               Edit Your Itinerary
             </label>
             <Textarea
@@ -311,12 +311,12 @@ export default function ItineraryResult({ itinerary, isGenerating, formData, onN
               rows={25}
               className="font-mono text-sm"
             />
-            <p className="mt-2 text-xs text-gray-400">
+            <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
               Tip: You can use Markdown formatting for better styling
             </p>
           </div>
         ) : (
-          <div className="text-gray-300 leading-relaxed">
+          <div className="text-gray-700 dark:text-gray-300 leading-relaxed">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
@@ -335,9 +335,9 @@ export default function ItineraryResult({ itinerary, isGenerating, formData, onN
                 ),
                 thead: ({ ...props }) => <thead className="bg-gradient-to-r from-primary/20 to-secondary/20" {...props} />,
                 tbody: ({ ...props }) => <tbody className="divide-y divide-border" {...props} />,
-                tr: ({ ...props }) => <tr className="hover:bg-white/5 transition-colors" {...props} />,
+                tr: ({ ...props }) => <tr className="hover:bg-white/5 dark:hover:bg-white/5 transition-colors" {...props} />,
                 th: ({ ...props }) => <th className="px-6 py-4 text-left text-sm font-semibold text-primary border-b border-primary/30" {...props} />,
-                td: ({ ...props }) => <td className="px-6 py-4 text-sm text-gray-300" {...props} />,
+                td: ({ ...props }) => <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300" {...props} />,
               }}
             >
               {itinerary}
@@ -357,7 +357,7 @@ export default function ItineraryResult({ itinerary, isGenerating, formData, onN
               <Sparkles className="w-5 h-5 text-primary" />
               <h3 className="text-lg font-semibold gradient-text">Request AI Modifications</h3>
             </div>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
               Ask the AI to make specific changes to your itinerary
             </p>
             <div className="flex space-x-3">
@@ -367,8 +367,7 @@ export default function ItineraryResult({ itinerary, isGenerating, formData, onN
                 onChange={(e) => setModificationRequest(e.target.value)}
                 placeholder="E.g., Add more budget-friendly options, Include local food spots..."
                 disabled={isModifying}
-                className="flex-1 px-4 py-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200"
-                style={{ colorScheme: 'dark' }}
+                className="flex-1 px-4 py-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 onKeyPress={(e) => e.key === 'Enter' && handleModifyItinerary()}
               />
               <button

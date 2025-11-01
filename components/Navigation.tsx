@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Plane, Compass, Sparkles, User, LogOut, BookOpen } from 'lucide-react';
 import { useSession, signOut } from 'next-auth/react';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,7 +27,7 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-surface/95 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/10 py-4'
+          ? 'bg-surface/95 dark:bg-surface/95 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/10 py-4'
           : 'bg-transparent py-6'
       }`}
     >
@@ -68,9 +69,13 @@ export default function Navigation() {
 
           {/* Auth Buttons */}
           {status === 'loading' ? (
-            <div className="hidden md:block w-24 h-10 glass rounded-full animate-pulse"></div>
+            <div className="hidden md:flex items-center space-x-4">
+              <ThemeToggle />
+              <div className="w-24 h-10 glass rounded-full animate-pulse"></div>
+            </div>
           ) : session ? (
             <div className="hidden md:flex items-center space-x-4">
+              <ThemeToggle />
               <Link
                 href="/my-itineraries"
                 className="flex items-center space-x-2 px-4 py-2 glass rounded-full hover:bg-white/10 transition-all duration-300"
@@ -101,6 +106,7 @@ export default function Navigation() {
             </div>
           ) : (
             <div className="hidden md:flex items-center space-x-4">
+              <ThemeToggle />
               <Link
                 href="/login"
                 className="px-6 py-2.5 glass rounded-full hover:bg-white/10 transition-all duration-300"

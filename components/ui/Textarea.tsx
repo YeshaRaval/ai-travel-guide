@@ -10,7 +10,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium mb-2 text-gray-300">
+          <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
             {label}
           </label>
         )}

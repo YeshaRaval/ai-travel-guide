@@ -18,22 +18,22 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27]">
       {/* Animated Background */}
       <div className="absolute inset-0">
         {/* Animated circles - Neon glow effect */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 dark:bg-primary/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 dark:bg-secondary/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent/15 dark:bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Stars background - only render on client to avoid hydration mismatch */}
       {mounted && (
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-20 dark:opacity-30">
           {[...Array(50)].map((_, i) => (
             <div
               key={i}
-              className="absolute bg-white rounded-full"
+              className="absolute bg-gray-400 dark:bg-white rounded-full"
               style={{
                 width: seededRandom(i * 4) * 3 + 1 + 'px',
                 height: seededRandom(i * 4 + 1) * 3 + 1 + 'px',
@@ -66,7 +66,7 @@ export default function Hero() {
               <span className="gradient-text">Planned by AI</span>
             </h1>
 
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+            <p className="text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl">
               Experience personalized travel itineraries crafted by advanced AI.
               From hidden gems to must-see attractions, we&apos;ll plan your perfect journey.
             </p>
@@ -115,7 +115,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold">Paris, France</p>
-                  <p className="text-xs text-gray-400">5 days trip</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">5 days trip</p>
                 </div>
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold">Bali, Indonesia</p>
-                  <p className="text-xs text-gray-400">7 days trip</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">7 days trip</p>
                 </div>
               </div>
             </div>

@@ -28,7 +28,7 @@ export default function ChainOfThought({ thoughts, isGenerating }: ChainOfThough
         </div>
         <div>
           <h3 className="text-xl font-bold">AI Thinking Process</h3>
-          <p className="text-sm text-gray-400">Watch how AI plans your perfect trip</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Watch how AI plans your perfect trip</p>
         </div>
       </div>
 
@@ -40,14 +40,14 @@ export default function ChainOfThought({ thoughts, isGenerating }: ChainOfThough
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-gray-300">{thought}</p>
+            <p className="text-sm text-gray-700 dark:text-gray-300">{thought}</p>
           </div>
         ))}
 
         {isGenerating && (
           <div className="flex items-center space-x-3 animate-pulse">
             <Loader className="w-5 h-5 text-primary animate-spin" />
-            <p className="text-sm text-gray-400">Analyzing and planning...</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Analyzing and planning...</p>
           </div>
         )}
       </div>

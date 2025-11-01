@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-primary/20 mt-24 bg-surface/50 backdrop-blur-xl">
+    <footer className="relative border-t border-primary/20 dark:border-primary/20 border-gray-200 mt-24 bg-surface/50 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -12,7 +12,7 @@ export default function Footer() {
               <Plane className="w-8 h-8 text-primary" />
               <span className="text-2xl font-bold gradient-text">TravelAI</span>
             </Link>
-            <p className="text-gray-400 max-w-md">
+            <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 max-w-md">
               Your AI-powered travel companion. Plan perfect trips with advanced AI technology
               and discover amazing destinations around the world.
             </p>
@@ -47,17 +47,17 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-primary transition-colors">
+                <Link href="/" className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-primary transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/itinerary" className="text-gray-400 hover:text-primary transition-colors">
+                <Link href="/itinerary" className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-primary transition-colors">
                   Plan Trip
                 </Link>
               </li>
               <li>
-                <Link href="/suggestions" className="text-gray-400 hover:text-primary transition-colors">
+                <Link href="/suggestions" className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-primary transition-colors">
                   Discover
                 </Link>
               </li>
@@ -69,17 +69,17 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <Link href="#" className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <Link href="#" className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-primary transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <Link href="#" className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-primary transition-colors">
                   Cookie Policy
                 </Link>
               </li>
@@ -88,8 +88,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
+        <div className="border-t border-border dark:border-border border-gray-200 mt-8 pt-8 text-center">
+          <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 text-sm">
             © {new Date().getFullYear()} TravelAI. Built with AI and powered by Azure OpenAI.
           </p>
         </div>

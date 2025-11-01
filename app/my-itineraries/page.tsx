@@ -77,18 +77,18 @@ export default function MyItinerariesPage() {
 
   if (status === 'loading' || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27]">
         <Loader2 className="w-12 h-12 text-primary animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27]">
       {/* Background Effects */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 dark:bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto">
@@ -97,7 +97,7 @@ export default function MyItinerariesPage() {
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             My <span className="gradient-text">Travel Plans</span>
           </h1>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Your saved itineraries and travel plans
           </p>
         </div>
@@ -105,7 +105,7 @@ export default function MyItinerariesPage() {
         {/* Itineraries Grid */}
         {itineraries.length === 0 ? (
           <div className="text-center glass rounded-3xl p-12 animate-slide-in-up">
-            <div className="text-gray-400 mb-6">
+            <div className="text-gray-600 dark:text-gray-400 mb-6">
               <MapPin className="w-16 h-16 mx-auto mb-4 opacity-50" />
               <p className="text-xl">No saved itineraries yet</p>
               <p className="text-sm mt-2">Start planning your next adventure!</p>
@@ -131,18 +131,18 @@ export default function MyItinerariesPage() {
                   </h3>
 
                   <div className="space-y-3 mb-6">
-                    <div className="flex items-center space-x-2 text-sm text-gray-400">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                       <Calendar className="w-4 h-4 text-primary" />
                       <span>
                         {new Date(itinerary.startDate).toLocaleDateString()} -{' '}
                         {new Date(itinerary.endDate).toLocaleDateString()}
                       </span>
                     </div>
-                    <div className="flex items-center space-x-2 text-sm text-gray-400">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                       <DollarSign className="w-4 h-4 text-secondary" />
                       <span className="capitalize">{itinerary.budget}</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-sm text-gray-400">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                       <MapPin className="w-4 h-4 text-accent" />
                       <span>{itinerary.travelers} travelers</span>
                     </div>

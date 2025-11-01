@@ -41,11 +41,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27] pt-24 pb-12">
       {/* Background Effects */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-secondary/10 dark:bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-center">
@@ -62,10 +62,10 @@ export default function LoginPage() {
               </div>
             </div>
             <h2 className="text-4xl font-bold gradient-text mb-4">Welcome Back!</h2>
-            <p className="text-gray-400 text-lg mb-6">
+            <p className="text-gray-600 dark:text-gray-400 text-lg mb-6">
               Continue your journey with AI-powered travel planning
             </p>
-            <div className="space-y-3 text-sm text-gray-400">
+            <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center justify-center space-x-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
                 <span>Personalized itineraries</span>
@@ -91,7 +91,7 @@ export default function LoginPage() {
           </div>
 
           <h1 className="text-3xl font-bold text-center mb-2">Sign In</h1>
-          <p className="text-gray-400 text-center mb-8">Access your personalized itineraries</p>
+          <p className="text-gray-600 dark:text-gray-400 text-center mb-8">Access your personalized itineraries</p>
 
           {error && (
             <div className="mb-6 p-4 glass rounded-xl border border-red-500/50 flex items-start space-x-3">

@@ -35,14 +35,14 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0f1629] to-[#0a0e27]">
+    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-gradient-to-b dark:from-[#0f1629] dark:to-[#0a0e27]">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-20 animate-slide-in-up">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             How It <span className="gradient-text">Works</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Four simple steps to your perfect vacation. Let AI do the heavy lifting
             while you dream about your next adventure.
           </p>
@@ -50,9 +50,6 @@ export default function HowItWorks() {
 
         {/* Steps */}
         <div className="relative">
-          {/* Connecting Line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 via-green-500 to-orange-500 opacity-20 transform -translate-y-1/2"></div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => {
               const Icon = step.icon;
@@ -76,15 +73,15 @@ export default function HowItWorks() {
 
                     {/* Content */}
                     <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-gray-400 leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
 
                   {/* Arrow for desktop */}
                   {index < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                      <div className="w-8 h-8 text-primary opacity-50">
+                    <div className="hidden lg:flex absolute top-1/2 -right-8 transform -translate-y-1/2 z-10 items-center justify-center w-16">
+                      <div className="w-6 h-6 text-primary dark:text-primary text-primary/60 dark:opacity-50">
                         <svg fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                         </svg>

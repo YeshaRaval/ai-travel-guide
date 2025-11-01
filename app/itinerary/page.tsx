@@ -158,11 +158,11 @@ export default function ItineraryPage() {
   const canProceedStep2 = formData.budget && formData.travelers && formData.accommodation;
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27]">
       {/* Background Effects */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent/10 dark:bg-accent/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-96 h-96 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
       </div>
 
       <div className="max-w-4xl mx-auto">
@@ -171,7 +171,7 @@ export default function ItineraryPage() {
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Create Your <span className="gradient-text">Perfect Itinerary</span>
           </h1>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Answer a few questions and let AI craft your dream vacation
           </p>
         </div>

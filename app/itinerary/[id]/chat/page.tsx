@@ -152,7 +152,7 @@ export default function ChatPage() {
 
   if (status === 'loading' || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27]">
         <Loader2 className="w-12 h-12 text-primary animate-spin" />
       </div>
     );
@@ -163,7 +163,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="h-screen bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27] flex flex-col pt-20 overflow-hidden">
+    <div className="h-screen bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27] flex flex-col pt-20 overflow-hidden">
       {/* Header */}
       <div className="flex-shrink-0 glass border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -171,13 +171,13 @@ export default function ChatPage() {
             <div className="flex items-center space-x-4">
               <Link
                 href="/my-itineraries"
-                className="p-2 glass rounded-full hover:bg-white/10 transition-all duration-300"
+                className="p-2 glass rounded-full hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300"
               >
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <div>
                 <h1 className="text-2xl font-bold gradient-text">{itinerary.destination}</h1>
-                <p className="text-sm text-gray-400">Chat with AI about your trip</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Chat with AI about your trip</p>
               </div>
             </div>
             <div className="flex items-center space-x-2 text-primary">
@@ -194,7 +194,7 @@ export default function ChatPage() {
           {/* Messages */}
           <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-6 space-y-6">
             {messages.length === 0 && (
-              <div className="text-center text-gray-400 mt-12">
+              <div className="text-center text-gray-600 dark:text-gray-400 mt-12">
                 <Sparkles className="w-12 h-12 mx-auto mb-4 opacity-50" />
                 <p className="text-lg">Start a conversation about your trip!</p>
                 <p className="text-sm mt-2">Ask questions, request changes, or get recommendations</p>
@@ -210,11 +210,11 @@ export default function ChatPage() {
                   className={`max-w-[70%] rounded-2xl p-4 ${
                     message.role === 'user'
                       ? 'bg-gradient-to-r from-primary to-secondary text-white'
-                      : 'glass'
+                      : 'glass text-gray-700 dark:text-gray-300'
                   }`}
                 >
                   {message.role === 'assistant' ? (
-                    <div className="prose prose-invert prose-sm max-w-none">
+                    <div className="prose dark:prose-invert prose-sm max-w-none">
                       <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {message.content}
                       </ReactMarkdown>
@@ -228,8 +228,8 @@ export default function ChatPage() {
 
             {streamingMessage && (
               <div className="flex justify-start">
-                <div className="max-w-[70%] glass rounded-2xl p-4">
-                  <div className="prose prose-invert prose-sm max-w-none">
+                <div className="max-w-[70%] glass rounded-2xl p-4 text-gray-700 dark:text-gray-300">
+                  <div className="prose dark:prose-invert prose-sm max-w-none">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {streamingMessage}
                     </ReactMarkdown>
@@ -249,8 +249,7 @@ export default function ChatPage() {
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder="Ask anything about your trip..."
                 disabled={isSending}
-                className="flex-1 px-4 py-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200"
-                style={{ colorScheme: 'dark' }}
+                className="flex-1 px-4 py-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
               />
               <button
                 type="submit"

@@ -43,11 +43,11 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-[#0a0e27] to-[#0f1629]">
+    <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white dark:bg-gradient-to-b dark:from-[#0a0e27] dark:to-[#0f1629]">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-surface to-background opacity-30"></div>
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 dark:bg-secondary/20 rounded-full blur-3xl"></div>
 
       <div className="relative max-w-7xl mx-auto">
         {/* Section Header */}
@@ -55,7 +55,7 @@ export default function FeaturesSection() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             Why Choose <span className="gradient-text">TravelAI</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Experience the future of travel planning with cutting-edge AI technology
             designed to make your journey unforgettable.
           </p>
@@ -81,7 +81,7 @@ export default function FeaturesSection() {
 
                 {/* Content */}
                 <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.description}</p>
               </div>
             );
           })}

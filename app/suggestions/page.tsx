@@ -156,11 +156,11 @@ export default function SuggestionsPage() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27]">
       {/* Background Effects */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 dark:bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto">
@@ -169,7 +169,7 @@ export default function SuggestionsPage() {
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Discover Your Next <span className="gradient-text">Adventure</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Explore curated destinations with live weather updates and AI-powered recommendations.
             Find your perfect getaway today!
           </p>
@@ -227,19 +227,19 @@ export default function SuggestionsPage() {
                       <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
                         {destination.name}
                       </h3>
-                      <p className="text-sm text-gray-400 flex items-center space-x-1 mt-1">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center space-x-1 mt-1">
                         <MapPin className="w-4 h-4" />
                         <span>{destination.country}</span>
                       </p>
                     </div>
                   </div>
 
-                  <p className="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-3">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed line-clamp-3">
                     {destination.description}
                   </p>
 
                   {/* Best Time */}
-                  <div className="flex items-center space-x-2 mb-4 text-sm text-gray-400">
+                  <div className="flex items-center space-x-2 mb-4 text-sm text-gray-600 dark:text-gray-400">
                     <Calendar className="w-4 h-4 text-accent" />
                     <span>{destination.bestTimeToVisit}</span>
                   </div>
@@ -261,17 +261,17 @@ export default function SuggestionsPage() {
                     <div className="grid grid-cols-3 gap-2 mb-4 p-3 glass rounded-xl">
                       <div className="text-center">
                         <Thermometer className="w-4 h-4 mx-auto mb-1 text-secondary" />
-                        <p className="text-xs text-gray-400">Feels</p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">Feels</p>
                         <p className="text-sm font-semibold">{Math.round(destinationWeather.feels_like)}°C</p>
                       </div>
                       <div className="text-center">
                         <Wind className="w-4 h-4 mx-auto mb-1 text-accent" />
-                        <p className="text-xs text-gray-400">Wind</p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">Wind</p>
                         <p className="text-sm font-semibold">{Math.round(destinationWeather.wind_speed)} m/s</p>
                       </div>
                       <div className="text-center">
                         <Cloud className="w-4 h-4 mx-auto mb-1 text-blue-400" />
-                        <p className="text-xs text-gray-400">Humidity</p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">Humidity</p>
                         <p className="text-sm font-semibold">{destinationWeather.humidity}%</p>
                       </div>
                     </div>

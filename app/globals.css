@@ -33,6 +33,38 @@
   --gradient-sunset: linear-gradient(120deg, #ff2d95 0%, #ff6b35 100%);
 }
 
+/* Light Mode Colors */
+.light {
+  /* Light theme backgrounds */
+  --background: #f8fafc;
+  --foreground: #1e293b;
+
+  /* Primary - Bright Blue (adjusted for light backgrounds) */
+  --primary: #0891b2;
+  --primary-hover: #0e7490;
+  --primary-light: rgba(8, 145, 178, 0.15);
+
+  /* Secondary - Bright Pink (adjusted for light backgrounds) */
+  --secondary: #db2777;
+  --secondary-hover: #be185d;
+  --secondary-light: rgba(219, 39, 119, 0.15);
+
+  /* Accent - Purple */
+  --accent: #7c3aed;
+  --accent-hover: #6d28d9;
+
+  /* Neutrals - Light Theme */
+  --surface: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --border: rgba(8, 145, 178, 0.3);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-card: linear-gradient(135deg, rgba(8, 145, 178, 0.1) 0%, rgba(219, 39, 119, 0.1) 100%);
+  --gradient-ocean: linear-gradient(120deg, #0891b2 0%, #7c3aed 100%);
+  --gradient-sunset: linear-gradient(120deg, #db2777 0%, #f97316 100%);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -140,6 +172,14 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.light .glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(8, 145, 178, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(8, 145, 178, 0.1);
+}
+
 /* Gradient text */
 .gradient-text {
   background: var(--gradient-ocean);
@@ -171,6 +211,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s;
+}
+
+.light input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
@@ -211,6 +255,10 @@ input[type="date"]::-webkit-datetime-edit-year-field:focus {
 /* Select dropdown options styling */
 select {
   color-scheme: dark;
+}
+
+.light select {
+  color-scheme: light;
 }
 
 select option {
