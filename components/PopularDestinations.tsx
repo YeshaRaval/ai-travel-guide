@@ -130,7 +130,7 @@ export default function PopularDestinations() {
 
                 {/* CTA */}
                 <Link
-                  href={`/itinerary?destination=${encodeURIComponent(destination.name + ', ' + destination.country)}`}
+                  href={`/itinerary?destination=${encodeURIComponent(destination.name)}`}
                   className="w-full py-2.5 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary hover:to-secondary rounded-lg font-semibold transition-all duration-300 block text-center"
                 >
                   Plan Your Trip

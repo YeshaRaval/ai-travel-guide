@@ -2,22 +2,13 @@
 
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Users } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Hero() {
-  const lottieRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Load Lottie player dynamically
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js';
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
   }, []);
 
   // Seeded random function to ensure consistent values between server and client
@@ -114,19 +105,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column - Lottie Animation */}
+          {/* Right Column - Floating Cards */}
           <div className="relative animate-float">
-            <div className="relative z-10" ref={lottieRef}>
-              <lottie-player
-                src="https://lottie.host/4c7f8d90-2684-4fd5-8a9c-9a7b9e7c3c9f/l2gK5xVqkl.json"
-                background="transparent"
-                speed="1"
-                style={{ width: '100%', height: '500px' }}
-                loop
-                autoplay
-              ></lottie-player>
-            </div>
-
             {/* Floating Cards */}
             <div className="absolute -left-4 top-1/4 glass rounded-2xl p-4 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="flex items-center space-x-3">

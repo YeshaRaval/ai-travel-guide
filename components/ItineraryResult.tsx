@@ -236,7 +236,7 @@ export default function ItineraryResult({ itinerary, isGenerating, formData, onN
                     <Edit2 className="w-5 h-5" />
                   </button>
                   <button
-                    onClick={handleSave}
+                    onClick={() => handleSave()}
                     disabled={isSaving || isSaved}
                     className={`p-3 glass rounded-full transition-all duration-300 ${
                       isSaved
