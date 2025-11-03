@@ -98,7 +98,7 @@ export default function ItineraryDetailPage() {
 
   if (status === 'loading' || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27]">
         <Loader2 className="w-12 h-12 text-primary animate-spin" />
       </div>
     );
@@ -109,11 +109,11 @@ export default function ItineraryDetailPage() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#0a0e27] via-[#0f1629] to-[#0a0e27]">
+    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#0f1629] dark:to-[#0a0e27]">
       {/* Background Effects */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 dark:bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="max-w-4xl mx-auto">
@@ -121,7 +121,7 @@ export default function ItineraryDetailPage() {
         <div className="mb-8 animate-slide-in-up">
           <Link
             href="/my-itineraries"
-            className="inline-flex items-center space-x-2 text-gray-400 hover:text-primary transition-colors mb-4"
+            className="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors mb-4"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to My Trips</span>
@@ -131,18 +131,18 @@ export default function ItineraryDetailPage() {
             <div>
               <h1 className="text-4xl font-bold mb-4 gradient-text">{itinerary.destination}</h1>
               <div className="flex flex-wrap gap-4">
-                <div className="flex items-center space-x-2 text-sm text-gray-400">
+                <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                   <Calendar className="w-4 h-4" />
                   <span>
                     {new Date(itinerary.startDate).toLocaleDateString()} -{' '}
                     {new Date(itinerary.endDate).toLocaleDateString()}
                   </span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-400">
+                <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                   <DollarSign className="w-4 h-4" />
                   <span className="capitalize">{itinerary.budget}</span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-400">
+                <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                   <MapPin className="w-4 h-4" />
                   <span>{itinerary.travelers} travelers</span>
                 </div>
@@ -152,7 +152,7 @@ export default function ItineraryDetailPage() {
             <div className="flex space-x-2">
               <Link
                 href={`/itinerary/${id}/chat`}
-                className="p-3 glass rounded-full hover:bg-white/10 transition-all duration-300"
+                className="p-3 glass rounded-full hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300"
                 title="Chat with AI"
               >
                 <MessageSquare className="w-5 h-5" />
@@ -160,7 +160,7 @@ export default function ItineraryDetailPage() {
               {!isEditing ? (
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="p-3 glass rounded-full hover:bg-white/10 transition-all duration-300"
+                  className="p-3 glass rounded-full hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300"
                   title="Edit Itinerary"
                 >
                   <Edit2 className="w-5 h-5" />
@@ -192,7 +192,7 @@ export default function ItineraryDetailPage() {
         <div className="glass rounded-3xl p-8 animate-slide-in-up">
           {isEditing ? (
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">
+              <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
                 Edit Your Itinerary
               </label>
               <Textarea
@@ -201,19 +201,19 @@ export default function ItineraryDetailPage() {
                 rows={25}
                 className="font-mono text-sm"
               />
-              <p className="mt-2 text-xs text-gray-400">
+              <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
                 Tip: You can use Markdown formatting for better styling
               </p>
             </div>
           ) : (
-            <div className="prose prose-invert prose-lg max-w-none">
+            <div className="prose dark:prose-invert prose-lg max-w-none">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
                   h1: ({ ...props }) => <h1 className="text-3xl font-bold mb-4 gradient-text" {...props} />,
                   h2: ({ ...props }) => <h2 className="text-2xl font-bold mt-8 mb-4 text-primary" {...props} />,
                   h3: ({ ...props }) => <h3 className="text-xl font-bold mt-6 mb-3 text-secondary" {...props} />,
-                  p: ({ ...props }) => <p className="mb-4 text-gray-300" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 text-gray-700 dark:text-gray-300" {...props} />,
                   ul: ({ ...props }) => <ul className="list-disc list-inside mb-4 space-y-2" {...props} />,
                   ol: ({ ...props }) => <ol className="list-decimal list-inside mb-4 space-y-2" {...props} />,
                   li: ({ ...props }) => <li className="ml-4" {...props} />,
@@ -225,9 +225,9 @@ export default function ItineraryDetailPage() {
                   ),
                   thead: ({ ...props }) => <thead className="bg-gradient-to-r from-primary/20 to-secondary/20" {...props} />,
                   tbody: ({ ...props }) => <tbody className="divide-y divide-border" {...props} />,
-                  tr: ({ ...props }) => <tr className="hover:bg-white/5 transition-colors" {...props} />,
+                  tr: ({ ...props }) => <tr className="hover:bg-white/5 dark:hover:bg-white/5 transition-colors" {...props} />,
                   th: ({ ...props }) => <th className="px-6 py-4 text-left text-sm font-semibold text-primary border-b border-primary/30" {...props} />,
-                  td: ({ ...props }) => <td className="px-6 py-4 text-sm text-gray-300" {...props} />,
+                  td: ({ ...props }) => <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300" {...props} />,
                 }}
               >
                 {itinerary.content}
